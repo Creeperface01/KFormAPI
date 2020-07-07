@@ -82,7 +82,7 @@ object KFormAPI : Listener {
     }
 
     private fun handleResponse(p: Player, pk: ModalFormResponsePacket) {
-        val form = forms[p.uniqueId]?.get(pk.formId) ?: return
+        val form = forms[p.uniqueId]?.remove(pk.formId) ?: return
 
         try {
             val response = mapper.readTree(pk.data)

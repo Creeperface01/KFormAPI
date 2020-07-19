@@ -60,13 +60,17 @@ class SimpleForm(
             }
         }
 
+        fun button(text: String, imageType: ImageType, imageData: String, onClick: ((Player) -> Unit)? = null) {
+            button(text, ImageData(imageType, imageData), onClick)
+        }
+
         /**
          * Add a button with image and on click callback
          *
          * @param text      button title
          */
-        fun button(text: String, imageType: ImageType, imageData: String, onClick: ((Player) -> Unit)? = null) {
-            buttons.add(ElementButton(text, ImageData(imageType, imageData)))
+        fun button(text: String, imageData: ImageData?, onClick: ((Player) -> Unit)? = null) {
+            buttons.add(ElementButton(text, imageData))
 
             onClick?.let {
                 buttonListeners[buttons.size - 1] = it

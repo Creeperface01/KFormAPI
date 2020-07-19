@@ -23,14 +23,11 @@ abstract class Form<R>(
     }
 
     fun submit(p: Player, response: R?) {
-        println(4)
         if (response == null) {
-            println(5)
             close(p)
             return
         }
 
-        println(6)
         for (listener in listeners) {
             listener(p, response)
         }
